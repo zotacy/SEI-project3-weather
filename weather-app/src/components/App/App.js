@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './Header.js';
+import Header from '../Header/Header';
 import axios from 'axios';
+import LocationData from '../LocationData/LocationData'
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
 
 class App extends Component{
   constructor(props){
@@ -23,6 +25,7 @@ class App extends Component{
     return (
       <div className="App">
         <Header/>
+        <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
         <main className="App-main">
           {this.state.weatherData.title}
         </main>
