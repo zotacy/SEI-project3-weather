@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
-import Header from './Header.js';
 import axios from 'axios';
+import './App.css';
+import Header from '../Header/Header';
+import Locations from '../Locations/Locations';
+
 
 class App extends Component{
   constructor(props){
@@ -10,8 +12,8 @@ class App extends Component{
     this.state={
       weatherData:[]
     }
-    // console.log(this.state)
-    // console.log(this.props)
+    console.log(this.state)
+    console.log(this.props)
   }
   componentDidMount = async () => {
     const weatherURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487796/"
@@ -24,6 +26,7 @@ class App extends Component{
       <div className="App">
         <Header/>
         <main className="App-main">
+        <Locations {...this.props}{...this.state}/>
           {this.state.weatherData.title}
         </main>
       </div>
