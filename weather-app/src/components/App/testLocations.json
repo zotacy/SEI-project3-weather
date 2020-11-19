@@ -1,0 +1,69 @@
+[
+    {
+    "consolidated_weather": [],
+    "time": "2020-11-19T12:27:50.261080-08:00",
+    "sun_rise": "2020-11-19T06:54:49.495747-08:00",
+    "sun_set": "2020-11-19T16:55:53.973687-08:00",
+    "timezone_name": "LMT",
+    "parent": {},
+    "sources": [],
+    "title": "San Francisco",
+    "location_type": "City",
+    "woeid": 2487956,
+    "latt_long": "37.777119, -122.41964",
+    "timezone": "US/Pacific"
+    }, {
+    "consolidated_weather": [],
+    "time": "2020-11-19T15:29:36.008867-05:00",
+    "sun_rise": "2020-11-19T06:55:45.314874-05:00",
+    "sun_set": "2020-11-19T16:51:11.232342-05:00",
+    "timezone_name": "LMT",
+    "parent": {},
+    "sources": [],
+    "title": "Washington DC",
+    "location_type": "City",
+    "woeid": 2514815,
+    "latt_long": "38.899101,-77.028999",
+    "timezone": "US/Eastern"
+    } , {
+    "consolidated_weather": [],
+    "time": "2020-11-19T15:31:07.159564-05:00",
+    "sun_rise": "2020-11-19T06:55:07.944923-05:00",
+    "sun_set": "2020-11-19T17:04:45.264677-05:00",
+    "timezone_name": "LMT",
+    "parent": {},
+    "sources": [],
+    "title": "Raleigh",
+    "location_type": "City",
+    "woeid": 2478307,
+    "latt_long": "35.785511,-78.642670",
+    "timezone": "America/New_York"
+    }, {
+    "consolidated_weather": [],
+    "time": "2020-11-19T20:27:02.589457Z",
+    "sun_rise": "2020-11-19T07:25:55.927253Z",
+    "sun_set": "2020-11-19T16:05:32.088922Z",
+    "timezone_name": "LMT",
+    "parent": {},
+    "sources": [],
+    "title": "London",
+    "location_type": "City",
+    "woeid": 44418,
+    "latt_long": "51.506321,-0.12714",
+    "timezone": "Europe/London"
+    }, {
+    "consolidated_weather": [],
+    "time": "2020-11-19T21:32:01.671993+01:00",
+    "sun_rise": "2020-11-19T08:06:18.951380+01:00",
+    "sun_set": "2020-11-19T17:05:26.324203+01:00",
+    "timezone_name": "LMT",
+    "parent": {},
+    "sources": [],
+    "title": "Paris",
+    "location_type": "City",
+    "woeid": 615702,
+    "latt_long": "48.856930,2.341200",
+    "timezone": "Europe/Paris"
+    }
+
+]
