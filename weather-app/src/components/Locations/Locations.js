@@ -3,7 +3,7 @@ import './Locations.css'
 
 class Locations extends Component{
     render(){
-        console.log(this.props)
+        // console.log(this.props)
         // let allLocations = this.props.weatherData.map((location,index)=>{
         //     return(
         //       <div key={index}>
@@ -12,7 +12,7 @@ class Locations extends Component{
         //     );
         // });
         return(
-            <div classname="location-list">
+            <div className="location-list">
                 <h1>List of Locations</h1>
             </div>
         )
