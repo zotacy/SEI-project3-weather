@@ -10,6 +10,7 @@ class Header extends Component{
                     <h1>Weather App Header</h1>
                     <Link to ="/"><h3 id="header-link">Weather Home</h3></Link>
                     <Link to="/LocationData"><h5 id="header-link">Weekly Forecast</h5></Link>
+                    <Link to="/new"><button id="newLocation">Add New Location</button></Link>
                 </header>
             </div>
         )

@@ -29,7 +29,6 @@ class App extends Component{
   
   render(){
     console.log(this.state)
-    console.log(this.props)
     return (
       <div className="App">
         <header>
@@ -37,7 +36,7 @@ class App extends Component{
         </header>
         <Switch>
           <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
-          <Route path="/new" exact render={routerProps => <AddLocations/>}/>
+          <Route path="/new" exact render={routerProps => <AddLocations {...this.props}{...this.state}/>}/>
           <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
         </Switch>
         <main className="App-main">

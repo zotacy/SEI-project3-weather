@@ -15,19 +15,21 @@ class AddLocations extends Component{
   }
 
   componentDidMount = async () => {
-    const weatherURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487956/";
-    let response = await axios.get(weatherURL, {headers:{Accept: 'application/json'}})
+    const weatherURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487796/"
+    let response = await axios.get(weatherURL)
     this.setState({metaWeatherData: response.data});
+    console.log(this.state)
   }
   
   render(){
     console.log(this.props)
-    console.log(this.state)
+    console.log(this.state.metaWeatherData.title)
     return (
       <div className="App">
         <main className="add-locations-main">
             <h1>New Locations</h1>
-            <App {...this.props}{...this.state}/>
+            {this.state.metaWeatherData.title}
+            {/* <Route path="/" exact render={routerProps => <App {...this.props}{...this.state}/>}/> */}
         </main>
       </div>
     )
