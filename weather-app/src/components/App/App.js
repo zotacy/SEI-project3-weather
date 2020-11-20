@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import { Route, Link, Switch, Redirect} from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import LocationData from '../LocationData/LocationData'
 import Locations from '../Locations/Locations';
+import AddLocations from "../LocationsAdd/AddLocations";
 import testLocations from './testLocations.json';
-import practiceData from './PracticeData.json'
-import { Route, Link, Switch, Redirect } from 'react-router-dom';
+import practiceData from './PracticeData.json';
 
 class App extends Component{
   constructor(props){
@@ -14,28 +14,30 @@ class App extends Component{
     
     this.state={
       weatherData:[],
-      locationData:[]
+      locationData:[],
+      metaWeatherData:[]
     }
     // console.log(this.state)
     // console.log(this.props)
   }
+
   componentDidMount = async () => {
-    // const weatherURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
-    // let response = await axios.get(weatherURL)
-    // this.setState({weatherData: response.data});
     this.setState({
       weatherData: testLocations,
-      locationData: practiceData
+      locationData: practiceData,
+      // metaWeatherData: this.props.metaWeatherData,
     })
   }
   
   render(){
-    console.log(this.state.weatherData)
     return (
       <div className="App">
+        <header>
         <Header/>
+        </header>
         <Switch>
-        <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
+          <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
+          <Route path="/new" exact render={routerProps => <AddLocations/>}/>
           <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
         </Switch>
         <main className="App-main">
