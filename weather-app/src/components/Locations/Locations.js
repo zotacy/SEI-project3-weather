@@ -1,10 +1,9 @@
 import React,{Component} from 'react';
-import { Route, Link, Switch, Redirect} from 'react-router-dom';
+// import { Route, Link, Switch, Redirect} from 'react-router-dom';
 import './Locations.css'
 
 class Locations extends Component{
     render(){
-        console.log(this.props)
         let allLocations = this.props.weatherData.map((location,index)=>{
             return(
               <div className="card" key={index}>
@@ -13,7 +12,6 @@ class Locations extends Component{
             </div>
             );
         });
-        console.log(this.props.metaWeatherData)
         let newLocation = this.props.metaWeatherData.map((newlocation,index)=>{
             return(
               <div className="card" key={index}>

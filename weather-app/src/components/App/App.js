@@ -17,8 +17,6 @@ class App extends Component{
       locationData:[],
       metaWeatherData:[]
     }
-    // console.log(this.state)
-    // console.log(this.props)
   }
 
   componentDidMount = async () => {
@@ -30,6 +28,8 @@ class App extends Component{
   }
   
   render(){
+    console.log(this.state)
+    console.log(this.props)
     return (
       <div className="App">
         <header>
