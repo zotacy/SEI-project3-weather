@@ -22,11 +22,11 @@ Thus far, as young developers we have been consistently reminded of the value of
 
 
 ## Technology Used
-*Visual Studio Code
-*NPM Install
-*Command Line Terminal
-*API 
-*Wireframe Design Tool
+* Visual Studio Code
+* NPM Install
+* Command Line Terminal
+* API 
+* Wireframe Design Tool
 
 
 ## General Requirements/MVP
