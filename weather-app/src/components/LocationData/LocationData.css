@@ -1,3 +1,9 @@
+
+.location{
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
 .week{
     display:flex;
     flex-wrap:wrap;
@@ -12,12 +18,16 @@
     border: 2px solid grey;
     margin: 5px;
     width: 15%;
+    min-width: 150px;
     column-count: 7;
 }
 
 ul{
     list-style-type: none;
+    overflow: hidden;
 }
+
+
 img{
  
     width: 50%;
@@ -27,4 +37,8 @@ p{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+#temp{
+ 
 }

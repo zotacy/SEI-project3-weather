@@ -35,7 +35,7 @@ class App extends Component{
       <div className="App">
         <Header/>
         <Switch>
-        <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
+          <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
           <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
         </Switch>
         <main className="App-main">
