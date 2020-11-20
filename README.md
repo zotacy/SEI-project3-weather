@@ -42,9 +42,9 @@ Requirements for the project are as follows:
 ## Additional App Features
 
 ## User Stories
--As a user, I should be able to click on a location.
--As a user, I should be able to view the weather data for that specific location.
--As a user, I should be able to add/save up to three locations.
--As a user, I should be able to delete a saved location.
--As a user, I should be able to manuever through site easily.
--As a user, I should be able to access the home page from the data show page.
+- As a user, I should be able to click on a location.
+- As a user, I should be able to view the weather data for that specific location.
+- As a user, I should be able to add/save up to three locations.
+- As a user, I should be able to delete a saved location.
+- As a user, I should be able to manuever through site easily.
+- As a user, I should be able to access the home page from the data show page.
