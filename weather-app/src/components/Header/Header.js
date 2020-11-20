@@ -8,7 +8,7 @@ class Header extends Component{
             <div>
                 <header className="App-header">
                     <h1>Weather App Header</h1>
-                    <Link to="/LocationData"><h3>Weekly Forecast</h3></Link>
+                    <Link to="/weather/2487796"><h3>Weekly Forecast</h3></Link>
                 </header>
             </div>
         )

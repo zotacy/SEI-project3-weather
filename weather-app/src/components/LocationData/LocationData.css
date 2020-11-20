@@ -1,4 +1,3 @@
-
 .location{
     font-size: 60px;
     margin-bottom: 10px;
@@ -12,24 +11,28 @@
 .day{
     display:flex;
     flex-wrap:wrap;
-    display:flex;
-    flex-wrap:wrap;
     justify-content:center;
     border: 2px solid grey;
+    border-radius: 10px;
     margin: 5px;
     width: 15%;
     min-width: 150px;
     column-count: 7;
+    background-color: #B23850;
+}
+.bar{
+    height: 200px;
 }
 
 ul{
+    padding: 0;
     list-style-type: none;
+    justify-content: left;
     overflow: hidden;
 }
 
 
 img{
- 
     width: 50%;
 }
 
@@ -38,7 +41,22 @@ p{
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.bigData{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
 
-#temp{
- 
+.chart{
+    width:45%;
+    margin: 10px;
+    background-color: #E7E3D4;
+    border-radius: 15px;
+}
+
+.Bar{
+    width:45%;
+    margin: 10px;
+    background-color: #E7E3D4;
+    border-radius: 15px;
 }
