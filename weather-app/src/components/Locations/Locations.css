@@ -5,13 +5,14 @@
     margin:0;
 }
 .locations-grid{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-padding:10px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:10px;
 }
 /* -----Location Card------ */
 .card{
+    background-color:white;
     width: 260px;
     border: 2px solid black;
     border-radius: 5px;
