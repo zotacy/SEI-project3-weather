@@ -16,6 +16,11 @@ Thus far, as young developers we have been consistently reminded of the value of
 |Created Repo and develop main branch|Designed app page wireframes|Solidified Git Command Steps|
 
 
+
+### Git Command Process(Draft Diagram)
+![image](https://user-images.githubusercontent.com/68744076/99820983-1286d300-2b17-11eb-88cc-659a3de69d5e.png)
+
+
 ## Technology Used
 *Visual Studio Code
 *NPM Install
@@ -24,7 +29,18 @@ Thus far, as young developers we have been consistently reminded of the value of
 *Wireframe Design Tool
 
 
-## General Requirements
+## General Requirements/MVP
+Requirements for the project are as follows: 
+1. Include data from a third-party API(weather API selected)
+2. Integrate a Github Repo with our created React App, leveraging the selected API
+3. Include React Router to handle the various views
+4. Render neccessary data from the API
+5. Follow Git Workflow
+6. All team members must make roughly the same number of commits inside the project
+7. App should be deployed to Surge
+
+## Additional App Features
+
 ## User Stories
 -As a user, I should be able to click on a location.
 -As a user, I should be able to view the weather data for that specific location.
