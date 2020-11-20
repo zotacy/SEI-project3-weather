@@ -1,0 +1,30 @@
+.week{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.day{
+    display:flex;
+    flex-wrap:wrap;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    border: 2px solid grey;
+    margin: 5px;
+    width: 15%;
+    column-count: 7;
+}
+
+ul{
+    list-style-type: none;
+}
+img{
+ 
+    width: 50%;
+}
+
+p{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

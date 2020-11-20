@@ -1,5 +1,4 @@
-{
-    consolidated_weather: [
+[
     {
     "id": 5882052067983360,
     "weather_state_name": "Heavy Cloud",
@@ -101,65 +100,5 @@
     "humidity": 66,
     "visibility": 9.999726596675416,
     "predictability": 68
-    }
-]}
-    // "time": "2020-11-19T13:15:22.461681-08:00",
-    // "sun_rise": "2020-11-19T06:54:49.495747-08:00",
-    // "sun_set": "2020-11-19T16:55:53.973687-08:00",
-    // "timezone_name": "LMT",
-    // "parent": {
-    // "title": "California",
-    // "location_type": "Region / State / Province",
-    // woeid: 2347563,
-    // latt_long: "37.271881,-119.270233"
-    // },
-    // sources: [
-    // {
-    // title: "BBC",
-    // slug: "bbc",
-    // url: "http://www.bbc.co.uk/weather/",
-    // crawl_rate: 360
-    // },
-    // {
-    // title: "Forecast.io",
-    // slug: "forecast-io",
-    // url: "http://forecast.io/",
-    // crawl_rate: 480
-    // },
-    // {
-    // title: "HAMweather",
-    // slug: "hamweather",
-    // url: "http://www.hamweather.com/",
-    // crawl_rate: 360
-    // },
-    // {
-    // title: "Met Office",
-    // slug: "met-office",
-    // url: "http://www.metoffice.gov.uk/",
-    // crawl_rate: 180
-    // },
-    // {
-    // title: "OpenWeatherMap",
-    // slug: "openweathermap",
-    // url: "http://openweathermap.org/",
-    // crawl_rate: 360
-    // },
-    // {
-    // title: "Weather Underground",
-    // slug: "wunderground",
-    // url: "https://www.wunderground.com/?apiref=fc30dc3cd224e19b",
-    // crawl_rate: 720
-    // },
-    // {
-    // title: "World Weather Online",
-    // slug: "world-weather-online",
-    // url: "http://www.worldweatheronline.com/",
-    // crawl_rate: 360
-    // }
-    // ],
-    // "title": "San Francisco",
-    // "location_type: "City",
-    // "woeid": 2487956,
-    // "latt_long": "37.777119, -122.41964",
-    // "timezone": "US/Pacific"
-    // }
+    }]
+    
