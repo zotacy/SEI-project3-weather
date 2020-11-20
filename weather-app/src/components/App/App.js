@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch, Redirect} from 'react-router-dom';
+import axios from 'axios';
 import './App.css';
 import Header from '../Header/Header';
 import LocationData from '../LocationData/LocationData'
@@ -15,7 +16,6 @@ class App extends Component{
     this.state={
       weatherData:[],
       locationData:[],
-      metaWeatherData:[]
     }
   }
 
@@ -23,8 +23,14 @@ class App extends Component{
     this.setState({
       weatherData: testLocations,
       locationData: practiceData,
-      // metaWeatherData: this.props.metaWeatherData,
     })
+  }
+  addNewLocation = async () => {
+    let thisState = this.state.weatherData;
+    const weatherURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487796/"
+    let response = await axios.get(weatherURL)
+    thisState.unshift(response.data)
+    this.setState({weatherData: thisState});
   }
   
   render(){
@@ -36,7 +42,7 @@ class App extends Component{
         </header>
         <Switch>
           <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
-          <Route path="/new" exact render={routerProps => <AddLocations {...this.props}{...this.state}/>}/>
+          <Route path="/new" exact render={routerProps => <AddLocations addNewLocation={this.addNewLocation}/>}/>
           <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
         </Switch>
         <main className="App-main">
