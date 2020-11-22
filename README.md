@@ -13,7 +13,9 @@ Thus far, as young developers we have been consistently reminded of the value of
 
 |**Zach**|**Lauren**|**Joey**|
 |--------|----------|--------|
-|Created Repo and develop main branch|Designed app page wireframes|Solidified Git Command Steps|
+|Created Repo and main branch|Designed app page wireframes|Solidified Git Command Steps|
+|Coded Various Components|Coded Component|Coded Various Components|
+|........|Created ReadMe|Ensured assigned tasks to team|
 
 
 
@@ -27,6 +29,7 @@ Thus far, as young developers we have been consistently reminded of the value of
 * Command Line Terminal
 * API 
 * Wireframe Design Tool
+* Lucid Chart
 
 
 ## General Requirements/MVP
