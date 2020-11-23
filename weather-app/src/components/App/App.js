@@ -10,6 +10,7 @@ import LocationsSearch from '../LocationsSearch/LocationsSearch';
 import testLocations from './testLocations.json';
 import baseCities from "./baseCities.json"
 
+
 class App extends Component{
   constructor(props){
     super(props);
