@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import "./LocationData.css";
+import testLocations from '../App/testLocations.json';
+// import images from './images';
 import {Line,Bar} from 'react-chartjs-2';
 
 class LocationData extends Component{
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
+            testWeather: testLocations,
+            allData:[],
+            localWeather:[],
             days:[],
             wind:[],
             labels: [],
@@ -52,30 +57,18 @@ class LocationData extends Component{
             ]
         }
     }
-    render(){
     
-    const localWeather = this.props.locationData
-    // const test = this.props.weatherData[0]
-    // const test2 = this.props.weatherData.find(weatherData => weatherData.woeid === this.props.match.params.id)
-    // let i;
-    // let test2;
-    // for(i=0; i<50; i++){
-    //     if (this.props.weatherData[i].woeid === this.props.match){
-    //         return(
-    //             test2 = this.props.weatherData[i].consolidated_weather
-    //         )
-    //     }
-    // }
+    render(){
 
-    // console.log(this.props.match.params.id)
-    // find(localWeather => weatherData.woeid === this.props.match.params.id)
-    // console.log(test)
-    // console.log(test2)
+    this.state.testWeather.map((test,i) => {
+        if(test.woeid == this.props.match.params.id){
+            this.state.allData = test
+            const weatherWeek = this.state.allData.consolidated_weather
+            console.log(weatherWeek);
+            this.state.localWeather = weatherWeek
+        }
+    })
 
-
-    // const localWeather = this.props.weatherData.find(localWeather => weatherData.woeid === this.props.match.params.id); 
-    //^^^Will line about when more data points are in add lCan have it be weatherData.title or weatherData.woeid for search method
-    // console.log(localWeather)
     
     function getDayOfWeek(date) {
         const dayOfWeek = new Date(date).getDay();    
@@ -93,7 +86,7 @@ class LocationData extends Component{
         return short
     }
 
-    localWeather.map((weather,i) => {
+    this.state.localWeather.map((weather,i) => {
         this.state.labels.push(`${weather.applicable_date}`)
 
         this.state.datasets[0].data.push(usaTemp(weather.the_temp))
@@ -102,33 +95,49 @@ class LocationData extends Component{
         this.bar.datasets[0].data.push(weather.predictability)
         this.bar.labels.push(weather.applicable_date)
         this.state.wind.push(limitNum(weather.wind_speed))
-        this.state.days.push(getDayOfWeek(weather.applicable_date))
+        if(i===0){this.state.days.push("Today")} else {this.state.days.push(getDayOfWeek(weather.applicable_date))}
      });
         
-    const weekWeather = localWeather.map((weather,i) => {
-       
-        return(
-            <div className="day">
-            <h2 type='date'>{this.state.days[i]}</h2> 
-                <ul>
-                    <img src={'https://www.metaweather.com/static/img/weather/png/' + weather.weather_state_abbr + '.png'}></img>
-                    <li id='weather'>Weather:{weather.weather_state_name}</li>
-                    <li id='temp' type='number'>Average Temp:{this.state.datasets[0].data[i]}</li>
-                    <li id='high' maxLength={8}>High:{this.state.datasets[1].data[i]}</li>
-                    <li id='low'>Low:{this.state.datasets[2].data[i]}</li>
-                    <li id='wind'>Wind:{this.state.wind[i]}mph {weather.wind_direction_compass} </li>
-                </ul>
-            </div>
-        )
-        
+    const weekWeather = this.state.localWeather.map((weather,i) => {
+       if(i===0){
+            return(
+                <div className="today">
+                    <h2 id='todayDate' type='date'>{this.state.days[i]}</h2> 
+                    <br></br>
+                    <img src={'https://www.metaweather.com/static/img/weather/png/' + weather.weather_state_abbr + '.png'} alt='weather icon'></img>
+                        <ul>
+                            <div className='todayInfo'>
+                                <li id='weather'>Weather:{weather.weather_state_name}</li>
+                                <li id='temp' type='number'>Average Temp:{this.state.datasets[0].data[i]}</li>
+                                <li id='high' maxLength={8}>High:{this.state.datasets[1].data[i]}</li>
+                                <li id='low'>Low:{this.state.datasets[2].data[i]}</li>
+                                <li id='wind'>Wind:{this.state.wind[i]}mph {weather.wind_direction_compass} </li>   
+                            </div>
+                        </ul>
+                    <br></br>
+                </div>
+            )
+       } else {
+            return(
+                <div className="day">
+                <h2 type='date'>{this.state.days[i]}</h2> 
+                    <ul>
+                        <img src={'https://www.metaweather.com/static/img/weather/png/' + weather.weather_state_abbr + '.png'} alt='weather icon'></img>
+                        <li id='weather'>Weather:{weather.weather_state_name}</li>
+                        <li id='temp' type='number'>Average Temp:{this.state.datasets[0].data[i]}</li>
+                        <li id='high' maxLength={8}>High:{this.state.datasets[1].data[i]}</li>
+                        <li id='low'>Low:{this.state.datasets[2].data[i]}</li>
+                        <li id='wind'>Wind:{this.state.wind[i]}mph {weather.wind_direction_compass} </li>
+                    </ul>
+                </div>
+            )
+       }        
     });
 
-
-    
       return(
         <div className="App">
           <main className="App-main">
-            <h1 className='location'>San Antonio</h1> {/* Update this when we pull actual data */}
+            <h1 className='location'>{this.state.allData.title}</h1>
             <button>Save to favorites</button>
             <div className='week'>
                 {weekWeather}
