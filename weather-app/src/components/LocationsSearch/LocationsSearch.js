@@ -9,6 +9,7 @@ class LocationsSearch extends Component{
             event.preventDefault()
             // console.log(event.target.title.value)
             this.props.searchLocations(event.target.title.value)
+            // this.props.addNewLocations(event.target.)
           }}>
             <label htmlFor="title"></label>
             <input type="text" id="title" name="title" placeholder="Enter City"></input>
