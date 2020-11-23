@@ -26,6 +26,7 @@ Thus far, as young developers we have been consistently reminded of the value of
 ## Technology Used
 * Visual Studio Code
 * NPM Install
+* React Web Framework
 * Command Line Terminal
 * API 
 * Wireframe Design Tool
