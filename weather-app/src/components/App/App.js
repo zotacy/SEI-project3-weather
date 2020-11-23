@@ -5,33 +5,10 @@ import './App.css';
 import Header from '../Header/Header';
 import LocationData from '../LocationData/LocationData'
 import Locations from '../Locations/Locations';
-// import AddLocations from "../LocationsAdd/AddLocations";
+import AddBase from "../AddBase/AddBase";
 import LocationsSearch from '../LocationsSearch/LocationsSearch';
 import testLocations from './testLocations.json';
-import practiceData from './PracticeData.json';
-
-// const woeidDatabase = [
-//   {
-//     title: "Raleigh",
-//     woeid: 2478307
-//   },
-//   {
-//     title: "San Francisco",
-//     woeid: 2487956
-//   },
-//   {
-//     title: "Washinton DC",
-//     woeid: 2514815
-//   },
-//   {
-//     title: "London",
-//     woeid: 44418
-//   },
-//   {
-//     title: "Paris",
-//     woeid: 615702
-//   },
-// ]
+import baseCities from "./baseCities.json"
 
 class App extends Component{
   constructor(props){
@@ -39,15 +16,15 @@ class App extends Component{
     
     this.state={
       weatherData:[],
-      locationData:[],
       searchData: [],
+      baseCities: [],
     }
   }
 
   componentDidMount = async () => {
     this.setState({
       weatherData: testLocations,
-      locationData: practiceData,
+      baseCities: baseCities
     })
   }
 
@@ -56,9 +33,9 @@ class App extends Component{
     const searchURL= "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query="
     let response = await axios.get(`${searchURL}${queryLocation}`)
     this.setState({searchData:response.data})
-    this.addNewLocation(response.data[0].woeid)
+    this.addLocation(response.data[0].woeid)
   }
-  addNewLocation = async (woeid) => {
+  addLocation = async (woeid) => {
     // console.log(woeid)
     let thisState = this.state.weatherData;
     const locationURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
@@ -68,15 +45,19 @@ class App extends Component{
   }
   
   render(){
-    // console.log(this.state)
+    console.log(this.state)
     return (
       <div className="App">
         <header>
         <Header/>
         </header>
         <Switch>
-          <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
-          {/* <Route path="/new" exact render={routerProps => <AddLocations addNewLocation={this.addNewLocation}/>}/> */}
+          <Route path="/" exact render={routerProps => 
+            <div>
+            <Locations {...this.props}{...this.state}/>
+            <AddBase {...this.props}{...this.state} addLocation={this.addLocation}/>
+            </div>
+          }/>
           <Route path="/search" exact render={routerProps => <LocationsSearch searchLocations={this.searchLocations}/>}/>
           <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
         </Switch>

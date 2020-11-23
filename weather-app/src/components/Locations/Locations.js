@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-// import { Route, Link, Switch, Redirect} from 'react-router-dom';
 import './Locations.css'
 
 class Locations extends Component{
@@ -9,7 +8,8 @@ class Locations extends Component{
             return(
               <div className="card" key={index}>
                   <h3>{location.title} <span id="woeid">(woeid:{location.woeid})</span></h3>
-                  <p>Timezone: {location.timezone} <span>({location.timezone_name})</span></p>
+                  <p>Timezone: {location.timezone}</p>
+                  {/* <span>({location.time})</span> */}
             </div>
             );
         });
