@@ -4,7 +4,7 @@ import './Locations.css'
 
 class Locations extends Component{
     render(){
-        console.log(this.props.weatherData)
+        // console.log(this.props.weatherData)
         let allLocations = this.props.weatherData.map((location,index)=>{
             return(
               <div className="card" key={index}>
@@ -19,7 +19,6 @@ class Locations extends Component{
             <h1>List of Locations</h1>
         </header>
             <div className="locations-grid">
-                {/* {newLocation} */}
                 {allLocations} 
             </div>
         </div>
