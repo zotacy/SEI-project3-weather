@@ -16,6 +16,8 @@ class App extends Component{
     this.state={
       weatherData:[],
       locationData:[],
+      // savedLocations:[],
+      inputValue: '',
     }
   }
 
@@ -32,13 +34,27 @@ class App extends Component{
     thisState.unshift(response.data)
     this.setState({weatherData: thisState});
   }
+
+
+  // addNewSavedLocation = ( SavedLocations ) => {
+  //   let thisState = this.state.savedLocations;
+  //   if ( SavedLocations ==true ) {
+  //     const myList = { 
+
+  //     }
+  //   }
+  // }
   
   render(){
+    
+
     console.log(this.state)
+
     return (
       <div className="App">
         <header>
         <Header/>
+        {/* <SavedLocations addNewSavedLocation={this.addNewSavedLocation}/> */}
         </header>
         <Switch>
           <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
