@@ -7,9 +7,7 @@ class LocationsSearch extends Component{
       <div className="App">
         <form name="searchLocation" id="searchLocation" className="search-location-form" onSubmit={(event)=>{
             event.preventDefault()
-            // console.log(event.target.title.value)
             this.props.searchLocations(event.target.title.value)
-            // this.props.addNewLocations(event.target.)
           }}>
             <label htmlFor="title"></label>
             <input type="text" id="title" name="title" placeholder="Enter City"></input>
