@@ -16,8 +16,8 @@ class AddLocations extends Component{
     return (
       <div className="App">
         <main className="add-locations-main">
-            <h1>New Locations</h1>
-            <button onClick={ ()=> {this.props.addNewLocation()}}>Add San Antonio</button>
+            {/* <h1>New Locations</h1>
+            <button onClick={ ()=> {this.props.addNewLocation()}}>Add San Antonio</button> */}
         </main>
       </div>
     )

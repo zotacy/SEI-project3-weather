@@ -10,6 +10,29 @@ import LocationsSearch from '../LocationsSearch/LocationsSearch';
 import testLocations from './testLocations.json';
 import practiceData from './PracticeData.json';
 
+const woeidDatabase = [
+  {
+    title: "Raleigh",
+    woeid: 2478307
+  },
+  {
+    title: "San Francisco",
+    woeid: 2487956
+  },
+  {
+    title: "Washinton DC",
+    woeid: 2514815
+  },
+  {
+    title: "London",
+    woeid: 44418
+  },
+  {
+    title: "Paris",
+    woeid: 615702
+  },
+]
+
 class App extends Component{
   constructor(props){
     super(props);
@@ -18,6 +41,7 @@ class App extends Component{
       weatherData:[],
       locationData:[],
       searchData: [],
+      searchWoeid:'',
     }
   }
 
@@ -27,19 +51,29 @@ class App extends Component{
       locationData: practiceData,
     })
   }
-  addNewLocation = async () => {
-    let thisState = this.state.weatherData;
-    const locationURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
-    const woeid = "2487796";
-    let response = await axios.get(`${locationURL}${woeid}`)
-    thisState.unshift(response.data)
-    this.setState({weatherData: thisState});
-  }
-  searchLocations = async ()=> {
+  // addNewSanAntonio = async () => {
+  //   let thisState = this.state.weatherData;
+  //   const locationURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
+  //   const woeid = "2487796";
+  //   let response = await axios.get(`${locationURL}${woeid}`)
+  //   thisState.unshift(response.data)
+  //   this.setState({weatherData: thisState});
+  // }
+  searchLocations = async (queryLocation)=> {
+    console.log(queryLocation)
     let thisState = this.state.weatherData;
     const searchURL= "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query="
-    const query= "Raleigh"
-    let response = await axios.get(`${searchURL}${query}`)
+    let response = await axios.get(`${searchURL}${queryLocation}`)
+    thisState.unshift(response.data)
+    this.setState({searchData:thisState})
+    this.setState({searchwoeid:response.data.woeid});
+  }
+  addNewLocation = async (woeid) => {
+    console.log(woeid)
+    let thisState = this.state.weatherData;
+    // let woeid = this.state.searchWoeid;
+    const locationURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
+    let response = await axios.get(`${locationURL}${woeid}`)
     thisState.unshift(response.data)
     this.setState({weatherData: thisState});
   }

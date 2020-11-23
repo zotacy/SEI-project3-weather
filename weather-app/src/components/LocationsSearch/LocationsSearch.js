@@ -2,35 +2,19 @@ import React, { Component } from 'react';
 import './LocationsSearch.css';
 
 class LocationsSearch extends Component{
-  constructor(props){
-    super(props);
-    
-    this.state={
-      foundLocation:[],
-    //   searchInput:"",
-    }
-  }
-//   handleChange = e => {
-//     const searchInput = e.currentTarget.value
-//     this.setState({
-//       searchInput: e.currentTarget.value,
-//     })
-//   }
-//   handleClick = e => {
-//     this.setState({
-//       searchInput: e.currentTarget.innerText,
-//     })
-//   }
-  
   render(){
-    console.log(this.props)
-    console.log(this.state.foundLocation)
     return (
       <div className="App">
-        <form className="search-location-form" onSubmit={this.props.searchLocations()}>
-            <input type="text" name="title" placeholder="Enter City" value={this.state.value}/>
-            <input type="submit" value="Search"/>
+        <form name="searchLocation" id="searchLocation" className="search-location-form" onSubmit={(event)=>{
+            event.preventDefault()
+            // console.log(event.target.title.value)
+            this.props.searchLocations(event.target.title.value)
+          }}>
+            <label htmlFor="title"></label>
+            <input type="text" id="title" name="title" placeholder="Enter City"></input>
         </form>
+        <button type="submit" form="searchLocation" value="Save">Submit</button>
+
       </div>
     )
   };
