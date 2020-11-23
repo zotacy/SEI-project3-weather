@@ -11,6 +11,7 @@ class Header extends Component{
                     <Link to ="/"><h3 id="header-link">Weather Home</h3></Link>
                     <Link to="/weather/248779"><h5 id="header-link">Weekly Forecast</h5></Link>
                     <Link to="/new"><button id="newLocation">Add New Location</button></Link>
+                    <Link to="/search"><button id="searchLocations">Search Locations</button></Link>
                 </header>
             </div>
         )
