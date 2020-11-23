@@ -27,8 +27,9 @@ class App extends Component{
   }
   addNewLocation = async () => {
     let thisState = this.state.weatherData;
-    const weatherURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487796/"
-    let response = await axios.get(weatherURL)
+    const locationURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
+    const woeid = "2487796";
+    let response = await axios.get(`${locationURL}${woeid}`)
     thisState.unshift(response.data)
     this.setState({weatherData: thisState});
   }
