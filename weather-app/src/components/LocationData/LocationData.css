@@ -1,3 +1,5 @@
+            /* main page layout */
+
 .location{
     font-size: 60px;
     margin-bottom: 10px;
@@ -6,8 +8,50 @@
 .week{
     display:flex;
     flex-wrap:wrap;
+    justify-content:center;
+
 }
 
+
+
+            /* Today block layout */
+.today{
+    display: flex;
+    justify-content:left;
+    border: 2px solid grey;
+    border-radius: 10px;
+    margin: 5px;
+    width: 91%;
+    min-width: 150px;
+    background-color: lightblue;
+}
+
+#todayDate{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.today img{
+    max-width: 300px;
+}
+
+.todayInfo{
+    list-style-type: none;
+    justify-content: center;
+    font-size: 25px;
+    border: 2px solid grey;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 10%;
+    width: 80%;
+    background-color: white;
+}
+
+
+
+            /* Weekday layout */
 .day{
     display:flex;
     flex-wrap:wrap;
@@ -15,16 +59,29 @@
     border: 2px solid grey;
     border-radius: 10px;
     margin: 5px;
-    width: 15%;
+    width: 17%;
     min-width: 150px;
     column-count: 7;
-    background-color: #B23850;
+    background-color: #009bd6;
 }
+
+.dayInfo{
+    list-style-type: none;
+    justify-content: center;
+    border: 2px solid grey;
+    border-radius: 10px;
+    margin-left: 10%;
+    width: 80%;
+    background-color: white;
+}
+
+
+            /* Chart Layout */
 .bar{
     height: 200px;
 }
 
-ul{
+.day ul{
     padding: 0;
     list-style-type: none;
     justify-content: left;

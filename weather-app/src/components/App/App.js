@@ -5,9 +5,11 @@ import './App.css';
 import Header from '../Header/Header';
 import LocationData from '../LocationData/LocationData'
 import Locations from '../Locations/Locations';
-import AddLocations from "../LocationsAdd/AddLocations";
+import AddBase from "../AddBase/AddBase";
+import LocationsSearch from '../LocationsSearch/LocationsSearch';
 import testLocations from './testLocations.json';
-import practiceData from './PracticeData.json';
+import baseCities from "./baseCities.json"
+
 
 class App extends Component{
   constructor(props){
@@ -15,50 +17,49 @@ class App extends Component{
     
     this.state={
       weatherData:[],
-      locationData:[],
-      // savedLocations:[],
       inputValue: '',
+      searchData: [],
+      baseCities: [],
     }
   }
 
   componentDidMount = async () => {
     this.setState({
       weatherData: testLocations,
-      locationData: practiceData,
+      baseCities: baseCities
     })
   }
-  addNewLocation = async () => {
-    let thisState = this.state.weatherData;
-    const weatherURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487796/"
-    let response = await axios.get(weatherURL)
-    thisState.unshift(response.data)
-    this.setState({weatherData: thisState});
+
+  searchLocations = async (queryLocation)=> {
+    // console.log(queryLocation)
+    const searchURL= "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query="
+    let response = await axios.get(`${searchURL}${queryLocation}`)
+    this.setState({searchData:response.data})
+    this.addLocation(response.data[0].woeid)
   }
-
-
-  // addNewSavedLocation = ( SavedLocations ) => {
-  //   let thisState = this.state.savedLocations;
-  //   if ( SavedLocations ==true ) {
-  //     const myList = { 
-
-  //     }
-  //   }
-  // }
-  
+  addLocation = async (woeid) => {
+    // console.log(woeid)
+    let thisState = this.state.weatherData;
+    const locationURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
+    let response = await axios.get(`${locationURL}${woeid}`)
+    thisState.unshift(response.data)
+    this.setState({weatherData:thisState});
+  } 
   render(){
-    
-
     console.log(this.state)
-
     return (
       <div className="App">
         <header>
         <Header/>
-        {/* <SavedLocations addNewSavedLocation={this.addNewSavedLocation}/> */}
         </header>
         <Switch>
-          <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
-          <Route path="/new" exact render={routerProps => <AddLocations addNewLocation={this.addNewLocation}/>}/>
+          <Route path="/" exact render={routerProps => 
+            <div>
+            <Locations {...this.props}{...this.state}/>
+            <AddBase {...this.props}{...this.state} addLocation={this.addLocation}/>
+            </div>
+          }/>
+          <Route path="/search" exact render={routerProps => <LocationsSearch searchLocations={this.searchLocations}/>}/>
           <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
         </Switch>
         <main className="App-main">
