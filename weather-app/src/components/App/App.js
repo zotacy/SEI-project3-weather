@@ -5,9 +5,33 @@ import './App.css';
 import Header from '../Header/Header';
 import LocationData from '../LocationData/LocationData'
 import Locations from '../Locations/Locations';
-import AddLocations from "../LocationsAdd/AddLocations";
+// import AddLocations from "../LocationsAdd/AddLocations";
+import LocationsSearch from '../LocationsSearch/LocationsSearch';
 import testLocations from './testLocations.json';
 import practiceData from './PracticeData.json';
+
+// const woeidDatabase = [
+//   {
+//     title: "Raleigh",
+//     woeid: 2478307
+//   },
+//   {
+//     title: "San Francisco",
+//     woeid: 2487956
+//   },
+//   {
+//     title: "Washinton DC",
+//     woeid: 2514815
+//   },
+//   {
+//     title: "London",
+//     woeid: 44418
+//   },
+//   {
+//     title: "Paris",
+//     woeid: 615702
+//   },
+// ]
 
 class App extends Component{
   constructor(props){
@@ -16,6 +40,7 @@ class App extends Component{
     this.state={
       weatherData:[],
       locationData:[],
+      searchData: [],
     }
   }
 
@@ -25,12 +50,21 @@ class App extends Component{
       locationData: practiceData,
     })
   }
-  addNewLocation = async () => {
+
+  searchLocations = async (queryLocation)=> {
+    // console.log(queryLocation)
+    const searchURL= "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query="
+    let response = await axios.get(`${searchURL}${queryLocation}`)
+    this.setState({searchData:response.data})
+    this.addNewLocation(response.data[0].woeid)
+  }
+  addNewLocation = async (woeid) => {
+    // console.log(woeid)
     let thisState = this.state.weatherData;
-    const weatherURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487796/"
-    let response = await axios.get(weatherURL)
+    const locationURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
+    let response = await axios.get(`${locationURL}${woeid}`)
     thisState.unshift(response.data)
-    this.setState({weatherData: thisState});
+    this.setState({weatherData:thisState});
   }
   
   render(){
@@ -42,7 +76,8 @@ class App extends Component{
         </header>
         <Switch>
           <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
-          <Route path="/new" exact render={routerProps => <AddLocations addNewLocation={this.addNewLocation}/>}/>
+          {/* <Route path="/new" exact render={routerProps => <AddLocations addNewLocation={this.addNewLocation}/>}/> */}
+          <Route path="/search" exact render={routerProps => <LocationsSearch searchLocations={this.searchLocations}/>}/>
           <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
         </Switch>
         <main className="App-main">

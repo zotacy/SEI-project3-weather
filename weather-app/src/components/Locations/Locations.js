@@ -19,7 +19,6 @@ class Locations extends Component{
             <h1>List of Locations</h1>
         </header>
             <div className="locations-grid">
-                {/* {newLocation} */}
                 {allLocations} 
             </div>
         </div>
