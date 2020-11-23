@@ -17,6 +17,7 @@ class App extends Component{
     
     this.state={
       weatherData:[],
+      inputValue: '',
       searchData: [],
       baseCities: [],
     }
@@ -43,8 +44,7 @@ class App extends Component{
     let response = await axios.get(`${locationURL}${woeid}`)
     thisState.unshift(response.data)
     this.setState({weatherData:thisState});
-  }
-  
+  } 
   render(){
     console.log(this.state)
     return (
