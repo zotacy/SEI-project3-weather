@@ -8,7 +8,6 @@ import Locations from '../Locations/Locations';
 // import AddLocations from "../LocationsAdd/AddLocations";
 import LocationsSearch from '../LocationsSearch/LocationsSearch';
 import testLocations from './testLocations.json';
-import practiceData from './PracticeData.json';
 
 // const woeidDatabase = [
 //   {
@@ -39,7 +38,6 @@ class App extends Component{
     
     this.state={
       weatherData:[],
-      locationData:[],
       searchData: [],
     }
   }
@@ -47,7 +45,6 @@ class App extends Component{
   componentDidMount = async () => {
     this.setState({
       weatherData: testLocations,
-      locationData: practiceData,
     })
   }
 

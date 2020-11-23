@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-// import { Route, Link, Switch, Redirect} from 'react-router-dom';
+import { Route, Link, Switch, Redirect} from 'react-router-dom';
 import './Locations.css'
 
 class Locations extends Component{
@@ -7,10 +7,13 @@ class Locations extends Component{
         // console.log(this.props.weatherData)
         let allLocations = this.props.weatherData.map((location,index)=>{
             return(
-              <div className="card" key={index}>
-                  <h3>{location.title} <span id="woeid">(woeid:{location.woeid})</span></h3>
-                  <p>Timezone: {location.timezone} <span>({location.timezone_name})</span></p>
-            </div>
+                <Link to={`/weather/${location.woeid}`}>
+                    <div className="card" key={index}>
+                        <h3>{location.title} <span id="woeid">(woeid:{location.woeid})</span></h3>
+                        <p>Timezone: {location.timezone} <span>({location.timezone_name})</span></p>
+                    </div>
+                </Link>
+                    
             );
         });
     return(
