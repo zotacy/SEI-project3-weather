@@ -13,7 +13,7 @@ class Locations extends Component{
                         <p>Timezone: {location.timezone} <span>({location.timezone_name})</span></p>
                     </div>
                 </Link>
-                    
+
             );
         });
     return(
