@@ -56,7 +56,7 @@ class App extends Component{
           <Route path="/" exact render={routerProps => 
             <div>
             <Locations {...this.props}{...this.state}/>
-            <AddBase {...this.props}{...this.state} addLocation={this.addLocation}/>
+            {/* <AddBase {...this.props}{...this.state} addLocation={this.addLocation}/> */}
             </div>
           }/>
           <Route path="/search" exact render={routerProps => <LocationsSearch searchLocations={this.searchLocations}/>}/>
