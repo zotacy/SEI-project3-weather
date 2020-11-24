@@ -56,12 +56,22 @@ class LocationData extends Component{
     
 
     componentDidMount = async ()=> {
-        const searchURL1= `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=2w7o5GdWgv60hcHi9C37ultmPq1dzEfi&q=${this.state.allData.title}`
+        let api = 'VjJdPRu0huYuvmPDD6NiiVd88gZmtyY8'
+        console.log(this.allData)
+        const searchURL1= `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${api}&q=Chicago`
+            // this.state.testWeather.map((data,i) => {
+            //     if(data.woeid == this.props.match.params.id){
+            //         console.log(data.title)
+            //         return (
+            //             toString(data.title).replace(/,/g,'')
+            //         )}})      
+        console.log(searchURL1)
         let response1 = await axios.get(`${searchURL1}`)
         // console.log(response1)
-        this.setState({accuLocation:response1.data[0].Key})
-        console.log(this.state.accuLocation)
-        const searchURL2= `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.state.accuLocation}?apikey=2w7o5GdWgv60hcHi9C37ultmPq1dzEfi&details=true`
+        // this.setState({accuLocation:response1.data[0].Key})
+        // console.log(this.state.accuLocation)
+        const searchURL2= `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${response1.data[0].Key}?apikey=${api}&details=true`
+        console.log(searchURL2)
         let response2 = await axios.get(`${searchURL2}`)
         this.state.accuData.unshift(response2.data.DailyForecasts)
         console.log(response2.data)
@@ -106,19 +116,15 @@ class LocationData extends Component{
     }
 
     this.state.accuData.map((rain,i) => {
-        console.log(rain.Date)
         this.bar.datasets[0].data.push(rain.Day.RainProbability)
-        this.bar.labels.push(rain.Date)
-        console.log(this.bar.datasets[0].data)
-        console.log(this.bar.labels)
+        this.bar.labels.push(getDayOfWeek(rain.Date.substring(0,10)))
     });
 
 
     this.state.localWeather.map((weather,i) => {
-        this.state.labels.push(`${weather.applicable_date}`)
-        console.log(this.state.localWeather)
-        this.state.datasets[0].data.push(usaTemp(weather.max_temp))
-        this.state.datasets[1].data.push(usaTemp(weather.min_temp))
+        if(this.state.labels.length < 6)this.state.labels.push(getDayOfWeek(`${weather.applicable_date}`))
+        if(this.state.datasets[0].data.length < 6){this.state.datasets[0].data.push(usaTemp(weather.max_temp))}
+        if(this.state.datasets[1].data.length < 6){this.state.datasets[1].data.push(usaTemp(weather.min_temp))}
         this.state.wind.push(limitNum(weather.wind_speed))
         if(i===0){this.state.days.push("Today")} else {this.state.days.push(getDayOfWeek(weather.applicable_date))}
         if(i===0){this.state.sunrise=sunshine(this.state.allData.sun_rise)}
