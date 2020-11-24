@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./LocationData.css";
-import testLocations from '../App/testLocations.json';
+import axios from 'axios';
 // import images from './images';
 import {Line,Bar} from 'react-chartjs-2';
 
@@ -11,6 +11,8 @@ class LocationData extends Component{
             testWeather: this.props.weatherData,
             allData:[],
             localWeather:[],
+            accuLocation:'',
+            accuData:[],
             days:[],
             wind:[],
             sunrise:'',
@@ -52,17 +54,33 @@ class LocationData extends Component{
         }
     }
     
-    render(){
 
-    this.state.testWeather.map((test,i) => {
-        if(test.woeid == this.props.match.params.id){
-            this.state.allData = test
+    componentDidMount = async ()=> {
+        const searchURL1= `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=2w7o5GdWgv60hcHi9C37ultmPq1dzEfi&q=${this.state.allData.title}`
+        let response1 = await axios.get(`${searchURL1}`)
+        // console.log(response1)
+        this.setState({accuLocation:response1.data[0].Key})
+        console.log(this.state.accuLocation)
+        const searchURL2= `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.state.accuLocation}?apikey=2w7o5GdWgv60hcHi9C37ultmPq1dzEfi&details=true`
+        let response2 = await axios.get(`${searchURL2}`)
+        this.state.accuData.unshift(response2.data.DailyForecasts)
+        console.log(response2.data)
+        this.setState({accuData:this.state.accuData[0]})
+        console.log(this.state.accuData);
+        return
+    }
+
+    render(){
+    
+    this.state.testWeather.map((data,i) => {
+        if(data.woeid == this.props.match.params.id){
+            this.state.allData = data
             const weatherWeek = this.state.allData.consolidated_weather
-            console.log(weatherWeek);
+            // console.log(weatherWeek);
             this.state.localWeather = weatherWeek
+            // this.key(this.state.allData.title);
         }
     })
-
     
     function getDayOfWeek(date) {
         const dayOfWeek = new Date(date).getDay();    
@@ -80,35 +98,32 @@ class LocationData extends Component{
         return short
     }
 
+    function sunshine(time){
+        const hours = ((time.substring(11,13)+11) % 11 + 1)
+        const min = time.substring (14,16)
+        time = hours + ':' + min
+        return time 
+    }
 
-
-
-            //working on adding sunrise and sun set to data page
-
-                                // function sunshine(time){
-                                //     const hours = ((time.substring(10,11)+11) % + 1)
-                                //     const min = time.substring (13,14)
-                                //     time = hours + ':' + min
-                                //     console.log(this.state.allData)
-                                //     return time 
-                                // }
-
-
-
-
+    this.state.accuData.map((rain,i) => {
+        console.log(rain.Date)
+        this.bar.datasets[0].data.push(rain.Day.RainProbability)
+        this.bar.labels.push(rain.Date)
+        console.log(this.bar.datasets[0].data)
+        console.log(this.bar.labels)
+    });
 
 
     this.state.localWeather.map((weather,i) => {
         this.state.labels.push(`${weather.applicable_date}`)
+        console.log(this.state.localWeather)
         this.state.datasets[0].data.push(usaTemp(weather.max_temp))
         this.state.datasets[1].data.push(usaTemp(weather.min_temp))
-        this.bar.datasets[0].data.push(weather.predictability)
-        this.bar.labels.push(weather.applicable_date)
         this.state.wind.push(limitNum(weather.wind_speed))
         if(i===0){this.state.days.push("Today")} else {this.state.days.push(getDayOfWeek(weather.applicable_date))}
-        // if(i===0){this.state.sunrise=sunshine(this.state.allData.sun_rise)}
-        // if(i===0){this.state.sunset=sunshine(this.state.allData.sun_set)}
-     });
+        if(i===0){this.state.sunrise=sunshine(this.state.allData.sun_rise)}
+        if(i===0){this.state.sunset=sunshine(this.state.allData.sun_set)}
+    });
         
     const weekWeather = this.state.localWeather.map((weather,i) => {
        if(i===0){
@@ -126,12 +141,12 @@ class LocationData extends Component{
                                 <li id='wind'>Wind:{this.state.wind[i]}mph {weather.wind_direction_compass} </li>   
                             </div>
                         </ul>
-                    {/* <div className="sun">
+                    <div className="sunshine">
                         <img key="uniqueId1" src={'https://image.flaticon.com/icons/png/512/728/728123.png'} alt='surise icon'></img>
-                        <p>Sunrise: {this.state.sunrise} AM</p>
+                        <p className='sun'>Sunrise: {this.state.sunrise} AM</p>
                         <img key="uniqueId2" src={'https://www.flaticon.com/svg/static/icons/svg/362/362409.svg'} alt='sunset icon'></img>
-                        <p>Sunset: {this.state.sunset} PM</p>
-                    </div> */}
+                        <p className='sun'>Sunset: {this.state.sunset} PM</p>
+                    </div>
                     
                     <br></br>
                 </div>
