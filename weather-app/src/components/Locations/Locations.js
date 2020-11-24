@@ -7,6 +7,7 @@ class Locations extends Component {
         super(props)
 
         this.state = {
+            cityArray:[],
             weatherData: []
         }
     }
@@ -16,15 +17,20 @@ class Locations extends Component {
         console.log(event.target.value)
         this.props.weatherData.map((location,index) => {
             if (location.title.startsWith(event.target.value)) {
+                this.setState({
+                    cityArray: location
+                })
+                console.log(this.state.cityArray)
+                
 
-            cityArray.push(this.props.weatherData[index])   
+            // cityArray.push(this.props.weatherData[index])   
         }})
         
-        this.state.weatherData = cityArray
-        console.log(this.state.weatherData)
-        return (
-            <p>{this.state.weatherData[0].title}</p>
-        )
+        // this.state.weatherData = cityArray
+        // console.log(this.state.weatherData)
+        // return (
+        //     <p>{this.state.weatherData[0].title}</p>
+        // )
     }
     render() {
 
@@ -51,7 +57,11 @@ class Locations extends Component {
             </form>
             <p>{this.state.weatherData.title}</p>
 
-            {/* <button type ="submit" form="citySearch" onChange={this.citySearch}>Submit</button> */}
+            <button type ="submit" form="citySearch" onClick={this.citySearch}>Submit</button>
+            <div>
+            
+            <p>{this.state.cityArray.title}</p>
+            </div>
           
         </header>
             <div className="locations-grid">
