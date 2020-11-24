@@ -43,7 +43,7 @@ class Locations extends Component {
         <header className="locations-header">
             <h1>List of Locations</h1>
             <form name='citySearch'>
-            <input type='text' placeholder='Search City' onChange={this.citySearch}></input>
+            <input type='text' placeholder='Search Saved Cities' onChange={this.citySearch}></input>
             </form>
             <button type ="submit" placeholder="SearchCity" form="citySearch">Submit</button>
           
