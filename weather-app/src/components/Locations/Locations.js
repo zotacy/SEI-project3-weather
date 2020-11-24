@@ -25,12 +25,12 @@ class Locations extends Component {
     }
     render() {
         let allLocations = this.props.weatherData.map((location,index)=>{
-            console.log(this.state)
+            // console.log(this.state)
             return(
                 <Link to={`/weather/${location.woeid}`}>
                     <div className="card" key={index}>
                         <h3>{location.title} <span id="woeid">(woeid:{location.woeid})</span></h3>
-                        <p>Timezone: {location.timezone} <span>({location.timezone_name})</span></p>
+                        <p>Timezone: {location.timezone}</p>
                     </div>
                 </Link>
             );
@@ -41,12 +41,14 @@ class Locations extends Component {
             <p>{this.state.weatherData.title}</p>
         <div>
         <header className="locations-header">
-            <h1>List of Locations</h1>
-            <form name='citySearch'>
-            <input type='text' placeholder='Search City' onChange={this.citySearch}></input>
-            </form>
-            <button type ="submit" placeholder="SearchCity" form="citySearch">Submit</button>
-          
+            <div className="citySearch">
+            <Link to="/search"><button id="searchLocations">Find New Location</button></Link>
+                <form name='citySearch'>
+                    <input type='text' placeholder='Search Saved Cities' onChange={this.citySearch}></input>
+                </form>
+                <button type ="submit" placeholder="SearchCity" form="citySearch">Submit</button>
+            </div>
+            <h1>Your Locations</h1>
         </header>
             <div className="locations-grid">
                 {allLocations} 

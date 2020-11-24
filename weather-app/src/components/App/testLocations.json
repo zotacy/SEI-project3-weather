@@ -158,7 +158,7 @@
     "crawl_rate": 360
     }
     ],
-    "title": "San Francisco",
+    "title": "Demo: San Francisco",
     "location_type": "City",
     "woeid": 2487956,
     "latt_long": "37.777119, -122.41964",
@@ -322,7 +322,7 @@
     "crawl_rate": 360
     }
     ],
-    "title": "Washington DC",
+    "title": "Demo: Washington DC",
     "location_type": "City",
     "woeid": 2514815,
     "latt_long": "38.899101,-77.028999",
@@ -474,7 +474,7 @@
     "crawl_rate": 360
     }
     ],
-    "title": "Raleigh",
+    "title": "Demo: Raleigh",
     "location_type": "City",
     "woeid": 2478307,
     "latt_long": "35.785511,-78.642670",
@@ -638,7 +638,7 @@
     "crawl_rate": 360
     }
     ],
-    "title": "London",
+    "title": "Demo: London",
     "location_type": "City",
     "woeid": 44418,
     "latt_long": "51.506321,-0.12714",
@@ -802,7 +802,7 @@
     "crawl_rate": 360
     }
     ],
-    "title": "Paris",
+    "title": "Demo: Paris",
     "location_type": "City",
     "woeid": 615702,
     "latt_long": "48.856930,2.341200",

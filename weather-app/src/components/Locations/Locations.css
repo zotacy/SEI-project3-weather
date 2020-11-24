@@ -1,5 +1,8 @@
 .locations-header{
     margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
 }
 .locations-header h1{
     margin:0;
@@ -13,16 +16,35 @@
 /* -----Location Card------ */
 .card{
     background-color:white;
-    width: 260px;
+    width: 300px;
     border: 2px solid black;
     border-radius: 5px;
     margin: 5px;
     padding:3px;
+    text-decoration: none;
 }
+a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+}
+
 #woeid{
+    text-decoration: none;
     font-size: 50%;
     color: darkgrey;
 }
 p, h3{
     margin: 2px;
+}
+h3{
+    /* text-decoration: underline; */
+}
+/*----- Search Function ------ */
+.citySearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:12px;
+}
+.citySearch button{
+    margin-left: 0px;
 }
