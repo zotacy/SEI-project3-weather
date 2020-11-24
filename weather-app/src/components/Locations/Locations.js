@@ -25,12 +25,12 @@ class Locations extends Component {
     }
     render() {
         let allLocations = this.props.weatherData.map((location,index)=>{
-            console.log(this.state)
+            // console.log(this.state)
             return(
                 <Link to={`/weather/${location.woeid}`}>
                     <div className="card" key={index}>
                         <h3>{location.title} <span id="woeid">(woeid:{location.woeid})</span></h3>
-                        <p>Timezone: {location.timezone} <span>({location.timezone_name})</span></p>
+                        <p>Timezone: {location.timezone}</p>
                     </div>
                 </Link>
             );
