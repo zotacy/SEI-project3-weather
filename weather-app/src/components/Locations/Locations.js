@@ -38,7 +38,6 @@ class Locations extends Component {
         let allLocations = this.props.weatherData.map((location,index)=>{
             // console.log(this.state)
             return(
-
                 <Link to={`/weather/${location.woeid}`}>
                     <div className="card" key={index}>
                         <h3>{location.title} <span id="woeid">(woeid:{location.woeid})</span></h3>
