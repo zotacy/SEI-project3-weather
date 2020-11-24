@@ -46,7 +46,7 @@ class Locations extends Component {
                 <form name='citySearch'>
                     <input type='text' placeholder='Search Saved Cities' onChange={this.citySearch}></input>
                 </form>
-                <button type ="submit" placeholder="SearchCity" form="citySearch">Submit</button>
+                <button type ="submit" form="citySearch">Submit</button>
             </div>
             <h1>Your Locations</h1>
         </header>
