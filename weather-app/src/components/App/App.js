@@ -45,6 +45,7 @@ class App extends Component{
     thisState.unshift(response.data)
     this.setState({weatherData:thisState});
   } 
+  
   render(){
     console.log(this.state)
     return (
@@ -53,10 +54,8 @@ class App extends Component{
         <Header/>
         </header>
         <Switch>
-
           <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
           <Route path="/base" render={routerProps => <AddBase {...this.props}{...this.state} addLocation={this.addLocation}/>}/>
-
           <Route path="/search" exact render={routerProps => <LocationsSearch searchLocations={this.searchLocations}/>}/>
           <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
         </Switch>

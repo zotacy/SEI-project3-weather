@@ -49,7 +49,6 @@ class Locations extends Component {
             );
         });
         return(
-
             <div>
             <p>{this.state.weatherData.title}</p>
             <div>
@@ -69,7 +68,6 @@ class Locations extends Component {
                 {/* {newLocation} */}
                 {allLocations} 
             </div>
-        </div>
         </div>
         )
     }
