@@ -1,5 +1,11 @@
+h1{
+    color: #06BEE1;
+}
 .locations-header{
     margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
 }
 .locations-header h1{
     margin:0;
@@ -25,4 +31,14 @@
 }
 p, h3{
     margin: 2px;
+}
+/*----- Search Function ------ */
+.citySearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:12px;
+}
+.citySearch button{
+    margin-left: 0px;
 }

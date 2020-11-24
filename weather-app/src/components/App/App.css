@@ -17,3 +17,11 @@
 .App-main{
   margin-top:20px;
 }
+
+h1{
+  /* color: #06BEE1; */
+  text-decoration: none;
+  color:lightblue;
+  -webkit-text-stroke: white;
+  -webkit-text-stroke-width: .75px;
+}
