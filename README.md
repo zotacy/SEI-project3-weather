@@ -15,7 +15,8 @@ Thus far, as young developers we have been consistently reminded of the value of
 |--------|----------|--------|
 |Created Repo and main branch|Designed app page wireframes|Solidified Git Command Steps|
 |Coded Various Components|Coded Component|Coded Various Components|
-|........|Created ReadMe|Ensured assigned tasks to team|
+|Focused on API requests and rendering locations|Created ReadMe|Ensured assigned tasks to team|
+|Worked on CSS/Styling/Layout|.....|.....|
 
 
 

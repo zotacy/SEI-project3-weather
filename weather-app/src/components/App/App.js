@@ -45,6 +45,7 @@ class App extends Component{
     thisState.unshift(response.data)
     this.setState({weatherData:thisState});
   } 
+  
   render(){
     console.log(this.state)
     return (
