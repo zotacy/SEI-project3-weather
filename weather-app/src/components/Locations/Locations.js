@@ -8,20 +8,18 @@ class Locations extends Component {
         super(props)
 
         this.state = {
+            searchLocation:'',
+            cityArray:[],
             weatherData: []
         }
     }
-    citySearch = (event) => {
-        let cityArray = [];
-      
+    citySearch = (event) => {      
         console.log(event.target.value)
         this.props.weatherData.map((location,index) => {
             if (location.title.startsWith(event.target.value))  
-            cityArray.push(this.props.weatherData[index])  
+            this.state.cityArray =this.props.weather
         })
-        this.setState({
-            weatherData: cityArray,
-        })
+        console.log(this.state.cityArray)
     }
     render() {
         let allLocations = this.props.weatherData.map((location,index)=>{
@@ -38,20 +36,20 @@ class Locations extends Component {
         return(
 
         <div>
-            <p>{this.state.weatherData.title}</p>
-        <div>
-        <header className="locations-header">
-            <h1>List of Locations</h1>
-            <form name='citySearch'>
-            <input type='text' placeholder='Search City' onChange={this.citySearch}></input>
-            </form>
-            <button type ="submit" placeholder="SearchCity" form="citySearch">Submit</button>
-          
-        </header>
-            <div className="locations-grid">
-                {allLocations} 
+            <p>{this.state.cityArray.title}</p>
+            <div>
+                <header className="locations-header">
+                    <h1>List of Locations</h1>
+                    <form name='citySearch'>
+                        <input type='text' placeholder='Search City' onChange={(event)=>this.citySearch(event)}></input>
+                    </form>
+                    <button type ="submit" placeholder="SearchCity" form="citySearch">Submit</button>
+                    <p>{this.state.cityArray}</p>
+                </header>
+                <div className="locations-grid">
+                    {allLocations} 
+                </div>
             </div>
-        </div>
         </div>
         )
     }
