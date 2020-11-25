@@ -14,8 +14,9 @@ Thus far, as young developers we have been consistently reminded of the value of
 |Coded Various Components|Coded Component|Coded Various Components|
 |Focused on API requests and rendering locations|Created ReadMe|Ensured assigned tasks to team|
 |Worked on CSS/Styling/Layout|.....|.....|
-### Git Command Process(Draft Diagram)
-![image](https://user-images.githubusercontent.com/68744076/99820983-1286d300-2b17-11eb-88cc-659a3de69d5e.png)
+### Git Command Process
+![Screen Shot 2020-11-25 at 10 44 39 AM](https://user-images.githubusercontent.com/68744076/100257239-54df5400-2f0b-11eb-93cd-1e09a80b4d00.png)
+
 ## Technology Used
 * Visual Studio Code
 * NPM Install

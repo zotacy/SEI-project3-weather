@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Arimo&family=Castoro:ital@0;1&family=Prata&family=Questrial&family=Sarabun:wght@300&display=swap');
+
+
 .App {
   text-align: center;
   background-color:#00719c;
@@ -22,6 +25,18 @@ h1{
   /* color: #06BEE1; */
   text-decoration: none;
   color:lightblue;
-  -webkit-text-stroke: white;
-  -webkit-text-stroke-width: .75px;
+  -webkit-text-stroke: whitesmoke;
+  -webkit-text-stroke-width: .45px;
+}
+
+.App-footer {
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.info {
+  min-height: 600px;
+
 }
