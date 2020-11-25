@@ -115,6 +115,27 @@ class LocationData extends Component{
         return time 
     }
 
+    function icon(state){
+        if(state == 'sn'){
+            return 'snowy-5'
+        } else if (state == 'sl') {
+            return 'snowy-4'
+        } else if (state == 'h') {
+            return 'rainy-7'
+        } else if (state == 't') {
+            return 'thunder'
+        } else if (state == 'hr') {
+            return 'rainy-6'
+        } else if (state =='lr') {
+            return 'rainy-5'
+        } else if (state == 's') {
+            return 'rainy-3'
+        } else if (state == 'hc') {
+            return 'cloudy'
+        } else if (state == 'lc') {
+            return 'cloudy-day-1'
+        } else { return 'day' }}
+
     this.state.accuData.map((rain,i) => {
         this.bar.datasets[0].data.push(rain.Day.RainProbability)
         this.bar.labels.push(getDayOfWeek(rain.Date.substring(0,10)))
@@ -137,11 +158,11 @@ class LocationData extends Component{
                 <div className="today">
                     <h2 id='todayDate' type='date'>{this.state.days[i]}</h2> 
                     <br></br>
-                    <img src={'https://www.metaweather.com/static/img/weather/png/' + weather.weather_state_abbr + '.png'} alt='weather icon'></img>
+                    <img src={'https://www.amcharts.com/wp-content/themes/amcharts4/css/img/icons/weather/animated/' + icon(weather.weather_state_abbr) + '.svg'} alt='weather icon'></img>
                         <ul>
                             <div className='todayInfo'>
                                 <li id='weather'>Weather:{weather.weather_state_name}</li>
-                                <li id='temp' type='number'>Current Temp:{this.state.datasets[0].data[i]}</li>
+                                <li id='temp' type='number'>Current Temp:{usaTemp(weather.the_temp)}</li>
                                 <li id='high' maxLength={8}>High:{this.state.datasets[0].data[i]}</li>
                                 <li id='low'>Low:{this.state.datasets[1].data[i]}</li>
                                 <li id='wind'>Wind:{this.state.wind[i]}mph {weather.wind_direction_compass} </li>   
@@ -162,7 +183,7 @@ class LocationData extends Component{
                 <div className="day">
                 <h2 type='date'>{this.state.days[i]}</h2> 
                     <ul>
-                        <img src={'https://www.metaweather.com/static/img/weather/png/' + weather.weather_state_abbr + '.png'} alt='weather icon'></img>
+                        <img src={'https://www.amcharts.com/wp-content/themes/amcharts4/css/img/icons/weather/animated/' + icon(weather.weather_state_abbr) + '.svg'} alt='weather icon'></img>
                         <ul className="dayInfo">
                             <li id='weather'>Weather:{weather.weather_state_name}</li>
                             {/* <li id='temp' type='number'>Average Temp:{this.state.datasets[0].data[i]}</li> */}
