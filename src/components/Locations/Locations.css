@@ -69,19 +69,22 @@ h3{
     /* border: 2px solid red; */
     /* width: min-content; */
     height: min-content;
+    max-height:200px;
     margin-left: 1vh;
 }
 .location-today-left #todayDate{
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
-    font-size: 7vw;
+    font-size: 6vh;
+    font-size:90%;
     padding:1vh;
-    margin: -20px 10px 50px 0px;
+    margin: -10px 10px 50px 0px;
 }
 .location-today-left img{
     width:50%;
     height:auto;
+}
 /* ------- title styling ----- */
 #header-link {
     font-family: 'Castoro';
