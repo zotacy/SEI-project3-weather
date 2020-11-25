@@ -67,8 +67,6 @@ There were a few things that we thought would have accented our weather app. How
 
 https://whistling-weather-app.herokuapp.com/
 
-## Issues and Resolutions
-
 
 
 
