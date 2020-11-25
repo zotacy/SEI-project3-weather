@@ -130,7 +130,9 @@ class Locations extends Component {
                 <div>
                     {this.state.searchResult}
                 </div>
-                <h1>Your Locations</h1>
+                
+                <h1 id='subHeader-Link'>Your Locations</h1>
+                
             </header>
             <div className="locations-grid">
                 {/* {newLocation} */}
