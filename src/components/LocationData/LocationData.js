@@ -56,12 +56,22 @@ class LocationData extends Component{
     
 
     componentDidMount = async ()=> {
-        const searchURL1= `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=2w7o5GdWgv60hcHi9C37ultmPq1dzEfi&q=${this.state.allData.title}`
+        let api = 'VjJdPRu0huYuvmPDD6NiiVd88gZmtyY8'
+        console.log(this.allData)
+        const searchURL1= `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${api}&q=Chicago`
+            // this.state.testWeather.map((data,i) => {
+            //     if(data.woeid == this.props.match.params.id){
+            //         console.log(data.title)
+            //         return (
+            //             toString(data.title).replace(/,/g,'')
+            //         )}})      
+        console.log(searchURL1)
         let response1 = await axios.get(`${searchURL1}`)
         // console.log(response1)
-        this.setState({accuLocation:response1.data[0].Key})
-        console.log(this.state.accuLocation)
-        const searchURL2= `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.state.accuLocation}?apikey=2w7o5GdWgv60hcHi9C37ultmPq1dzEfi&details=true`
+        // this.setState({accuLocation:response1.data[0].Key})
+        // console.log(this.state.accuLocation)
+        const searchURL2= `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${response1.data[0].Key}?apikey=${api}&details=true`
+        console.log(searchURL2)
         let response2 = await axios.get(`${searchURL2}`)
         this.state.accuData.unshift(response2.data.DailyForecasts)
         console.log(response2.data)
@@ -105,20 +115,37 @@ class LocationData extends Component{
         return time 
     }
 
+    function icon(state){
+        if(state == 'sn'){
+            return 'snowy-5'
+        } else if (state == 'sl') {
+            return 'snowy-4'
+        } else if (state == 'h') {
+            return 'rainy-7'
+        } else if (state == 't') {
+            return 'thunder'
+        } else if (state == 'hr') {
+            return 'rainy-6'
+        } else if (state =='lr') {
+            return 'rainy-5'
+        } else if (state == 's') {
+            return 'rainy-3'
+        } else if (state == 'hc') {
+            return 'cloudy'
+        } else if (state == 'lc') {
+            return 'cloudy-day-1'
+        } else { return 'day' }}
+
     this.state.accuData.map((rain,i) => {
-        console.log(rain.Date)
         this.bar.datasets[0].data.push(rain.Day.RainProbability)
-        this.bar.labels.push(rain.Date)
-        console.log(this.bar.datasets[0].data)
-        console.log(this.bar.labels)
+        this.bar.labels.push(getDayOfWeek(rain.Date.substring(0,10)))
     });
 
 
     this.state.localWeather.map((weather,i) => {
-        this.state.labels.push(`${weather.applicable_date}`)
-        console.log(this.state.localWeather)
-        this.state.datasets[0].data.push(usaTemp(weather.max_temp))
-        this.state.datasets[1].data.push(usaTemp(weather.min_temp))
+        if(this.state.labels.length < 6)this.state.labels.push(getDayOfWeek(`${weather.applicable_date}`))
+        if(this.state.datasets[0].data.length < 6){this.state.datasets[0].data.push(usaTemp(weather.max_temp))}
+        if(this.state.datasets[1].data.length < 6){this.state.datasets[1].data.push(usaTemp(weather.min_temp))}
         this.state.wind.push(limitNum(weather.wind_speed))
         if(i===0){this.state.days.push("Today")} else {this.state.days.push(getDayOfWeek(weather.applicable_date))}
         if(i===0){this.state.sunrise=sunshine(this.state.allData.sun_rise)}
@@ -129,26 +156,31 @@ class LocationData extends Component{
        if(i===0){
             return(
                 <div className="today">
+                  <div className="today-left">
                     <h2 id='todayDate' type='date'>{this.state.days[i]}</h2> 
-                    <br></br>
-                    <img src={'https://www.metaweather.com/static/img/weather/png/' + weather.weather_state_abbr + '.png'} alt='weather icon'></img>
-                        <ul>
-                            <div className='todayInfo'>
-                                <li id='weather'>Weather:{weather.weather_state_name}</li>
-                                <li id='temp' type='number'>Current Temp:{this.state.datasets[0].data[i]}</li>
-                                <li id='high' maxLength={8}>High:{this.state.datasets[0].data[i]}</li>
-                                <li id='low'>Low:{this.state.datasets[1].data[i]}</li>
-                                <li id='wind'>Wind:{this.state.wind[i]}mph {weather.wind_direction_compass} </li>   
-                            </div>
-                        </ul>
+                    <img src={'https://www.amcharts.com/wp-content/themes/amcharts4/css/img/icons/weather/animated/' + icon(weather.weather_state_abbr) + '.svg'} alt='weather icon'></img>
+                  </div>
+                  <div className="today-right">
+                    <ul>
+                        <div className='todayInfo'>
+                            <li id='weather'><span>Weather:</span> {weather.weather_state_name}</li>
+                            <li id='temp' type='number'><span>Current Temp:</span> {this.state.datasets[0].data[i]}</li>
+                            <li id='high' maxLength={8}><span>High:</span> {this.state.datasets[0].data[i]}</li>
+                            <li id='low'><span>Low:</span> {this.state.datasets[1].data[i]}</li>
+                            <li id='wind'><span>Wind:</span> {this.state.wind[i]}mph {weather.wind_direction_compass} </li>   
+                        </div>
+                    </ul>
                     <div className="sunshine">
-                        <img key="uniqueId1" src={'https://image.flaticon.com/icons/png/512/728/728123.png'} alt='surise icon'></img>
-                        <p className='sun'>Sunrise: {this.state.sunrise} AM</p>
-                        <img key="uniqueId2" src={'https://www.flaticon.com/svg/static/icons/svg/362/362409.svg'} alt='sunset icon'></img>
-                        <p className='sun'>Sunset: {this.state.sunset} PM</p>
+                        <div classname="sunrise">
+                            <img key="uniqueId1" src={'https://image.flaticon.com/icons/png/512/728/728123.png'} alt='surise icon'></img>
+                            <p className='sun'>Sunrise: {this.state.sunrise} AM</p>
+                        </div>
+                        <div className="sunset">
+                            <img key="uniqueId2" src={'https://www.flaticon.com/svg/static/icons/svg/362/362409.svg'} alt='sunset icon'></img>
+                            <p className='sun'>Sunset: {this.state.sunset} PM</p>
+                        </div>
                     </div>
-                    
-                    <br></br>
+                  </div>
                 </div>
             )
        } else {
@@ -156,13 +188,13 @@ class LocationData extends Component{
                 <div className="day">
                 <h2 type='date'>{this.state.days[i]}</h2> 
                     <ul>
-                        <img src={'https://www.metaweather.com/static/img/weather/png/' + weather.weather_state_abbr + '.png'} alt='weather icon'></img>
+                        <img src={'https://www.amcharts.com/wp-content/themes/amcharts4/css/img/icons/weather/animated/' + icon(weather.weather_state_abbr) + '.svg'} alt='weather icon'></img>
                         <ul className="dayInfo">
-                            <li id='weather'>Weather:{weather.weather_state_name}</li>
+                            <li id='weather'><span>Weather: </span>{weather.weather_state_name}</li>
                             {/* <li id='temp' type='number'>Average Temp:{this.state.datasets[0].data[i]}</li> */}
-                            <li id='high' maxLength={8}>High:{this.state.datasets[0].data[i]}</li>
-                            <li id='low'>Low:{this.state.datasets[1].data[i]}</li>
-                            <li id='wind'>Wind:{this.state.wind[i]}mph {weather.wind_direction_compass} </li>
+                            <li id='high' maxLength={8}><span>High: </span>{this.state.datasets[0].data[i]}</li>
+                            <li id='low'><span>Low: </span>{this.state.datasets[1].data[i]}</li>
+                            <li id='wind'><span>Wind: </span>{this.state.wind[i]}mph {weather.wind_direction_compass} </li>
                         </ul>    
                     </ul>
                 </div>
@@ -174,7 +206,7 @@ class LocationData extends Component{
         <div className="App">
           <main className="App-main">
             <h1 className='location'>{this.state.allData.title}</h1>
-            <button>Save to favorites</button>
+            {/* <button>Save to favorites</button> */}
             <div className='week'>
                 {weekWeather}
             </div>
@@ -203,7 +235,7 @@ class LocationData extends Component{
                         title:{
                         display:true,
                         text:'Chance of Rain',
-                        fontSize:30
+                        fontSize:25
                         },
                         legend:{
                         display:true,
