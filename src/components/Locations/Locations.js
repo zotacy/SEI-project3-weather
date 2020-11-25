@@ -89,7 +89,7 @@ class Locations extends Component {
                     return(
                         <Link to={`/weather/${city.woeid}`}>
                           <div className="today">
-                            <div className="today-left">
+                            <div className="locations-today-left">
                                 <h2 id='todayDate' type='date'>{city.title} Weather</h2> 
                                 <img src={'https://www.amcharts.com/wp-content/themes/amcharts4/css/img/icons/weather/animated/' + icon(weather.weather_state_abbr) + '.svg'} alt='weather icon'></img>
                             </div>

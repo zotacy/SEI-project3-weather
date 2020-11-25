@@ -32,8 +32,8 @@ span{
 }
 
 .today-left{
-    /* border: 2px solid red; */
     width: min-content;
+    height: min-content;
 }
 #todayDate{
     display:flex;

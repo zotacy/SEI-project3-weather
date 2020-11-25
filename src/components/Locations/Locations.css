@@ -48,3 +48,22 @@ h3{
 .citySearch button{
     margin-left: 0px;
 }
+/* ----- locationData Preview ------- */
+.location-today-left{
+    /* border: 2px solid red; */
+    /* width: min-content; */
+    height: min-content;
+    margin-left: 1vh;
+}
+.location-today-left #todayDate{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    font-size: 7vh;
+    padding:1vh;
+    margin: -20px 10px 50px 0px;
+}
+.location-today-left img{
+    width:50%;
+    height:auto;
+}
