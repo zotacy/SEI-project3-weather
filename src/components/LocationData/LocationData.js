@@ -42,7 +42,7 @@ class LocationData extends Component{
             labels: [],
             datasets: [
                 {
-                    label: '',
+                    label: 'Percent Chance',
                     fill: false,
                     lineTension: 0.5,
                     backgroundColor: '#C4DBF6',
@@ -239,7 +239,7 @@ class LocationData extends Component{
                         },
                         legend:{
                         display:true,
-                        position:'right'
+                        position:'right',
                         }
                     }}
                     />
