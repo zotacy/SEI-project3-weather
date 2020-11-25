@@ -36,10 +36,11 @@ class App extends Component{
     const searchURL= "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query="
     let response = await axios.get(`${searchURL}${queryLocation}`)
     this.setState({searchData:response.data})
+    console.log(response.data)
     this.addLocation(response.data[0].woeid)
   }
   addLocation = async (woeid) => {
-    // console.log(woeid)
+    console.log(woeid)
     let thisState = this.state.weatherData;
     const locationURL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
     let response = await axios.get(`${locationURL}${woeid}`)

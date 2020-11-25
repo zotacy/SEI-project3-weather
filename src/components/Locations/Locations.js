@@ -88,28 +88,33 @@ class Locations extends Component {
                 if(i===0){
                     return(
                         <Link to={`/weather/${city.woeid}`}>
-                            <div className="today">
+                          <div className="today">
+                            <div className="locations-today-left">
                                 <h2 id='todayDate' type='date'>{city.title} Weather</h2> 
-                                <br></br>
                                 <img src={'https://www.amcharts.com/wp-content/themes/amcharts4/css/img/icons/weather/animated/' + icon(weather.weather_state_abbr) + '.svg'} alt='weather icon'></img>
-                                    <ul>
-                                        <div className='todayInfo'>
-                                            <li id='weather'>Weather:{weather.weather_state_name}</li>
-                                            <li id='temp' type='number'>Current Temp:{usaTemp(weather.the_temp)}</li>
-                                            <li id='high' maxLength={8}>High:{usaTemp(weather.max_temp)}</li>
-                                            <li id='low'>Low:{usaTemp(weather.min_temp)}</li>
-                                            <li id='wind'>Wind:{limitNum(weather.wind_speed)}mph {weather.wind_direction_compass} </li>   
-                                        </div>
-                                    </ul>
-                                <div className="sunshine">
-                                    <img key="uniqueId1" src={'https://image.flaticon.com/icons/png/512/728/728123.png'} alt='surise icon'></img>
-                                    <p className='sun'>Sunrise: {sunshine(city.sun_rise)} AM</p>
-                                    <img key="uniqueId2" src={'https://www.flaticon.com/svg/static/icons/svg/362/362409.svg'} alt='sunset icon'></img>
-                                    <p className='sun'>Sunset: {sunshine(city.sun_set)} PM</p>
-                                </div>
-                                
-                                <br></br>
                             </div>
+                            <div className="today-right">
+                                <ul>
+                                    <div className='todayInfo'>
+                                        <li id='weather'><span>Weather:</span>{weather.weather_state_name}</li>
+                                        <li id='temp' type='number'><span>Current Temp:</span>{usaTemp(weather.the_temp)}</li>
+                                        <li id='high' maxLength={8}><span>High:</span>{usaTemp(weather.max_temp)}</li>
+                                        <li id='low'><span>Low:</span>{usaTemp(weather.min_temp)}</li>
+                                        <li id='wind'><span>Wind:</span>{limitNum(weather.wind_speed)}mph {weather.wind_direction_compass} </li>   
+                                    </div>
+                                </ul>
+                                <div className="sunshine">
+                                    <div classname="sunrise">
+                                        <img key="uniqueId1" src={'https://image.flaticon.com/icons/png/512/728/728123.png'} alt='surise icon'></img>
+                                        <p className='sun'>Sunrise: {sunshine(city.sun_rise)} AM</p>
+                                    </div>
+                                    <div classname="sunset">
+                                        <img key="uniqueId2" src={'https://www.flaticon.com/svg/static/icons/svg/362/362409.svg'} alt='sunset icon'></img>
+                                        <p className='sun'>Sunset: {sunshine(city.sun_set)} PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
                         </Link>
                     )
                 }
@@ -123,7 +128,7 @@ class Locations extends Component {
                 <div className="citySearch">
                     <Link to="/search"><button id="searchLocations">Find New Location</button></Link>
                     <form name='citySearch'>
-                            <input type='text' placeholder='Search City' onChange={(event) => this.searchValue(event)}></input>
+                        <input type='text' placeholder='Search City' onChange={(event) => this.searchValue(event)}></input>
                     </form>
                     <button type ="submit" form="citySearch" onClick={(event) => this.citySearch(event)}>Submit</button>
                 </div>
@@ -135,7 +140,6 @@ class Locations extends Component {
                 
             </header>
             <div className="locations-grid">
-                {/* {newLocation} */}
                 {allLocations} 
             </div>
         </div>

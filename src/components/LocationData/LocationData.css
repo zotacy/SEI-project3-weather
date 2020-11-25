@@ -12,42 +12,50 @@
 
 }
 
+span{
+    font-weight: bold;
+    font-size:90%;
+}
+
 /* -------- Today block layout -------- */
 .today{
     display: flex;
-    justify-content:left;
+    justify-content:space-evenly;
+    align-items: center;
     border: 2px solid grey;
     border-radius: 10px;
-    margin: 5px;
+    margin: 0 auto;
     width: 91%;
-    min-width: 150px;
+    min-width: min-content;
+    max-height:250px;
     background-color: lightblue;
-    align-items:center;
 }
 
+.today-left{
+    width: min-content;
+    height: min-content;
+}
 #todayDate{
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
-    font-size: 40px;
-    padding:10px;
-    margin: 10px;
+    font-size: 7vh;
+    padding:1vw;
 }
-
-
 .today-left img{
-    width:85%;
+    width:150%;
     height:auto;
-    max-width:100px;
-    margin:0 auto;
+    margin:-20%;
+    padding:0;
 }
 
 .today-right {
+    /* border: 2px solid blue; */
     display: flex;
     justify-content: center;
     align-items:center;
+    height: min-content;
 }
-
 .todayInfo{
     list-style-type: none;
     justify-content: center;
@@ -57,58 +65,52 @@
     border-radius: 10px;
     margin-top: 10px;
     width: 90%;
-    /* height: 100%; */
     min-width:250px;
     background-color: white;
     padding: 5px 1px 5px 1px;
 }
 
-span{
-    font-weight: bold;
-    font-size:90%;
-}
-
 .sunshine{
     display:flex;
     flex-direction:column;
-    justify-content: center;
-    height:auto;
-    margin: 10px 30px 10px 30px;
+    justify-content: space-evenly;
+    height: max-content;
+    width: min-content;
+    margin: 10px 15px 10px 15px;
 }
-.sunrise, .sunshine{
+.sunrise,.sunset{
     display:flex;
+    flex-direction:column;
     justify-content:center;
 }
-.sunshine img{
-    width:90%;
+.sunrise,.sunset img{
     height:auto;
     max-width:100px;
     margin:0 auto;
 }
-
 .sun{
     list-style-type: none;
     justify-content: center;
     font-size: 3vh;
     border: 2px solid grey;
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
     padding:3px;
     background-color: white;
+    margin-top:-5px;
 }
 
 /* -------- Weekday layout -------- */
 .day{
     display:flex;
-    flex-wrap:wrap;
-    justify-content:space-evenly;
+    flex-direction:column;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 5px;
-    width: 17%;
-    min-width: 150px;
+    width:17%;
     column-count: 7;
     background-color: #009bd6;
+    font-size: 2vw;
 }
 
 .dayInfo{
@@ -116,17 +118,19 @@ span{
     justify-content: center;
     border: 2px solid grey;
     border-radius: 10px;
-    margin-left: 10%;
-    width: 80%;
-    padding: 5px 1px 5px 1px;
+    margin:0 auto;
     background-color: white;
+    padding:5px;
+    width: 90%;
+    /* max-width:90%; */
+    font-size: 1.5vw;
 }
 
 h2{
     margin: 5px 0px 0px 0px;
 }
 .day img{
-    margin: 10px auto;
+    width: 75%;
 }
 /* -------- Chart Layout -------- */
 .bar{
