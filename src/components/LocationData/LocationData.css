@@ -12,6 +12,11 @@
 
 }
 
+span{
+    font-weight: bold;
+    font-size:90%;
+}
+
 /* -------- Today block layout -------- */
 .today{
     display: flex;
@@ -19,25 +24,23 @@
     align-items: center;
     border: 2px solid grey;
     border-radius: 10px;
-    margin: 5px;
+    margin: 0 auto;
     width: 91%;
     min-width: min-content;
-    height: min-content;
+    max-height:250px;
     background-color: lightblue;
-    align-items:center;
-}
-
-#todayDate{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content: center;
-    font-size: 8vh;
-    padding:1vh;
 }
 
 .today-left{
     /* border: 2px solid red; */
     width: min-content;
+}
+#todayDate{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    font-size: 7vh;
+    padding:1vh;
 }
 .today-left img{
     width:150%;
@@ -47,13 +50,12 @@
 }
 
 .today-right {
+    /* border: 2px solid blue; */
     display: flex;
     justify-content: center;
     align-items:center;
-    /* border: 2px solid blue; */
     height: min-content;
 }
-
 .todayInfo{
     list-style-type: none;
     justify-content: center;
@@ -66,11 +68,6 @@
     min-width:250px;
     background-color: white;
     padding: 5px 1px 5px 1px;
-}
-
-span{
-    font-weight: bold;
-    font-size:90%;
 }
 
 .sunshine{
@@ -91,7 +88,6 @@ span{
     max-width:100px;
     margin:0 auto;
 }
-
 .sun{
     list-style-type: none;
     justify-content: center;
@@ -107,12 +103,12 @@ span{
 /* -------- Weekday layout -------- */
 .day{
     display:flex;
-    flex-direction:column;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 5px;
-    width: 17%;
-    min-width: 150px;
+    width:17%;
     column-count: 7;
     background-color: #009bd6;
 }
@@ -122,10 +118,9 @@ span{
     justify-content: center;
     border: 2px solid grey;
     border-radius: 10px;
-    margin-left: 5%;
-    width: 80%;
-    padding: 5px;
+    margin:0 auto;
     background-color: white;
+    width: 85%;
 }
 
 h2{
@@ -133,7 +128,6 @@ h2{
 }
 .day img{
     width: 75%;
-    /* margin: 10px auto; */
 }
 /* -------- Chart Layout -------- */
 .bar{
