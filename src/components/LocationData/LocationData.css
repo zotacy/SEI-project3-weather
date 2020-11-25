@@ -43,7 +43,7 @@
 
 .today-right {
     display: flex;
-    /* justify-content: space-evenly; */
+    justify-content: center;
     align-items:center;
 }
 
@@ -71,6 +71,7 @@ span{
     display:flex;
     flex-direction:column;
     justify-content: center;
+    height:auto;
     margin: 10px 30px 10px 30px;
 }
 .sunrise, .sunshine{
@@ -160,6 +161,7 @@ p{
     margin: 10px;
     background-color: #E7E3D4;
     border-radius: 15px;
+    padding:5px;
 }
 
 .Bar{
@@ -167,6 +169,7 @@ p{
     margin: 10px;
     background-color: #E7E3D4;
     border-radius: 15px;
+    padding:5px;
 }
 
 /* ------- Media Query Sizing ------ */

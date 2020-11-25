@@ -185,7 +185,7 @@ class LocationData extends Component{
         <div className="App">
           <main className="App-main">
             <h1 className='location'>{this.state.allData.title}</h1>
-            <button>Save to favorites</button>
+            {/* <button>Save to favorites</button> */}
             <div className='week'>
                 {weekWeather}
             </div>
@@ -214,7 +214,7 @@ class LocationData extends Component{
                         title:{
                         display:true,
                         text:'Chance of Rain',
-                        fontSize:30
+                        fontSize:25
                         },
                         legend:{
                         display:true,
