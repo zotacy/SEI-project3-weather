@@ -3,6 +3,7 @@ import { Route, Link, Switch, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import LocationData from '../LocationData/LocationData'
 import Locations from '../Locations/Locations';
 import AddBase from "../AddBase/AddBase";
@@ -53,16 +54,23 @@ class App extends Component{
         <header>
         <Header/>
         </header>
-        <Switch>
-          <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
-          <Route path="/base" render={routerProps => <AddBase {...this.props}{...this.state} addLocation={this.addLocation}/>}/>
-          <Route path="/search" exact render={routerProps => <LocationsSearch searchLocations={this.searchLocations}/>}/>
-          <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
-        </Switch>
-        <main className="App-main">
-
-        </main>
+        <div className='info'>
+          <Switch>
+            <Route path="/" exact render={routerProps => <Locations {...this.props}{...this.state}/>}/>
+            <Route path="/base" render={routerProps => <AddBase {...this.props}{...this.state} addLocation={this.addLocation}/>}/>
+            <Route path="/search" exact render={routerProps => <LocationsSearch searchLocations={this.searchLocations}/>}/>
+            <Route path="/weather/:id" exact render={routerProps => <LocationData {...routerProps} {...this.state} />}/>
+          </Switch>
+          <main className="App-main">
+          
+          </main>
+        </div>
+        <div className='Footer'>
+          <Footer/>
+        </div>
+        
       </div>
+      
     )
   };
 }

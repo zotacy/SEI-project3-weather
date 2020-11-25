@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Arimo&family=Asap&family=Castoro:ital@0;1&family=Prata&family=Questrial&family=Sarabun:wght@300&family=Slabo+27px&display=swap');
+
 .locations-header{
     margin: 10px auto;
     display: flex;
@@ -47,4 +49,16 @@ h3{
 }
 .citySearch button{
     margin-left: 0px;
+}
+#header-link {
+    font-family: 'Castoro';
+    font-style: italic;
+
+}
+
+#subHeader-Link {
+    font-family: 'Sarabun';
+    text-decoration-color: grey;
+    
+
 }
