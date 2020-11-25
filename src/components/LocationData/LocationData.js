@@ -156,26 +156,31 @@ class LocationData extends Component{
        if(i===0){
             return(
                 <div className="today">
+                  <div className="today-left">
                     <h2 id='todayDate' type='date'>{this.state.days[i]}</h2> 
-                    <br></br>
                     <img src={'https://www.amcharts.com/wp-content/themes/amcharts4/css/img/icons/weather/animated/' + icon(weather.weather_state_abbr) + '.svg'} alt='weather icon'></img>
-                        <ul>
-                            <div className='todayInfo'>
-                                <li id='weather'>Weather:{weather.weather_state_name}</li>
-                                <li id='temp' type='number'>Current Temp:{usaTemp(weather.the_temp)}</li>
-                                <li id='high' maxLength={8}>High:{this.state.datasets[0].data[i]}</li>
-                                <li id='low'>Low:{this.state.datasets[1].data[i]}</li>
-                                <li id='wind'>Wind:{this.state.wind[i]}mph {weather.wind_direction_compass} </li>   
-                            </div>
-                        </ul>
+                  </div>
+                  <div className="today-right">
+                    <ul>
+                        <div className='todayInfo'>
+                            <li id='weather'><span>Weather:</span> {weather.weather_state_name}</li>
+                            <li id='temp' type='number'><span>Current Temp:</span> {this.state.datasets[0].data[i]}</li>
+                            <li id='high' maxLength={8}><span>High:</span> {this.state.datasets[0].data[i]}</li>
+                            <li id='low'><span>Low:</span> {this.state.datasets[1].data[i]}</li>
+                            <li id='wind'><span>Wind:</span> {this.state.wind[i]}mph {weather.wind_direction_compass} </li>   
+                        </div>
+                    </ul>
                     <div className="sunshine">
-                        <img key="uniqueId1" src={'https://image.flaticon.com/icons/png/512/728/728123.png'} alt='surise icon'></img>
-                        <p className='sun'>Sunrise: {this.state.sunrise} AM</p>
-                        <img key="uniqueId2" src={'https://www.flaticon.com/svg/static/icons/svg/362/362409.svg'} alt='sunset icon'></img>
-                        <p className='sun'>Sunset: {this.state.sunset} PM</p>
+                        <div classname="sunrise">
+                            <img key="uniqueId1" src={'https://image.flaticon.com/icons/png/512/728/728123.png'} alt='surise icon'></img>
+                            <p className='sun'>Sunrise: {this.state.sunrise} AM</p>
+                        </div>
+                        <div className="sunset">
+                            <img key="uniqueId2" src={'https://www.flaticon.com/svg/static/icons/svg/362/362409.svg'} alt='sunset icon'></img>
+                            <p className='sun'>Sunset: {this.state.sunset} PM</p>
+                        </div>
                     </div>
-                    
-                    <br></br>
+                  </div>
                 </div>
             )
        } else {
@@ -185,11 +190,11 @@ class LocationData extends Component{
                     <ul>
                         <img src={'https://www.amcharts.com/wp-content/themes/amcharts4/css/img/icons/weather/animated/' + icon(weather.weather_state_abbr) + '.svg'} alt='weather icon'></img>
                         <ul className="dayInfo">
-                            <li id='weather'>Weather:{weather.weather_state_name}</li>
+                            <li id='weather'><span>Weather: </span>{weather.weather_state_name}</li>
                             {/* <li id='temp' type='number'>Average Temp:{this.state.datasets[0].data[i]}</li> */}
-                            <li id='high' maxLength={8}>High:{this.state.datasets[0].data[i]}</li>
-                            <li id='low'>Low:{this.state.datasets[1].data[i]}</li>
-                            <li id='wind'>Wind:{this.state.wind[i]}mph {weather.wind_direction_compass} </li>
+                            <li id='high' maxLength={8}><span>High: </span>{this.state.datasets[0].data[i]}</li>
+                            <li id='low'><span>Low: </span>{this.state.datasets[1].data[i]}</li>
+                            <li id='wind'><span>Wind: </span>{this.state.wind[i]}mph {weather.wind_direction_compass} </li>
                         </ul>    
                     </ul>
                 </div>
@@ -201,7 +206,7 @@ class LocationData extends Component{
         <div className="App">
           <main className="App-main">
             <h1 className='location'>{this.state.allData.title}</h1>
-            <button>Save to favorites</button>
+            {/* <button>Save to favorites</button> */}
             <div className='week'>
                 {weekWeather}
             </div>
@@ -230,7 +235,7 @@ class LocationData extends Component{
                         title:{
                         display:true,
                         text:'Chance of Rain',
-                        fontSize:30
+                        fontSize:25
                         },
                         legend:{
                         display:true,
