@@ -15,12 +15,14 @@
 /* -------- Today block layout -------- */
 .today{
     display: flex;
-    justify-content:left;
+    justify-content:space-evenly;
+    align-items: center;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 5px;
     width: 91%;
-    min-width: 150px;
+    min-width: min-content;
+    height: min-content;
     background-color: lightblue;
     align-items:center;
 }
@@ -29,22 +31,27 @@
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
-    font-size: 40px;
-    padding:10px;
-    margin: 10px;
+    font-size: 8vh;
+    padding:1vh;
 }
 
+.today-left{
+    /* border: 2px solid red; */
+    width: min-content;
+}
 .today-left img{
-    width:85%;
+    width:150%;
     height:auto;
-    max-width:100px;
-    margin:0 auto;
+    margin:-20%;
+    padding:0;
 }
 
 .today-right {
     display: flex;
     justify-content: center;
     align-items:center;
+    /* border: 2px solid blue; */
+    height: min-content;
 }
 
 .todayInfo{
@@ -56,7 +63,6 @@
     border-radius: 10px;
     margin-top: 10px;
     width: 90%;
-    /* height: 100%; */
     min-width:250px;
     background-color: white;
     padding: 5px 1px 5px 1px;
@@ -70,16 +76,17 @@ span{
 .sunshine{
     display:flex;
     flex-direction:column;
-    justify-content: center;
-    height:auto;
-    margin: 10px 30px 10px 30px;
+    justify-content: space-evenly;
+    height: max-content;
+    width: min-content;
+    margin: 10px 15px 10px 15px;
 }
-.sunrise, .sunshine{
+.sunrise,.sunset{
     display:flex;
+    flex-direction:column;
     justify-content:center;
 }
-.sunshine img{
-    width:90%;
+.sunrise,.sunset img{
     height:auto;
     max-width:100px;
     margin:0 auto;
@@ -91,9 +98,10 @@ span{
     font-size: 3vh;
     border: 2px solid grey;
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
     padding:3px;
     background-color: white;
+    margin-top:-5px;
 }
 
 /* -------- Weekday layout -------- */
@@ -114,7 +122,7 @@ span{
     justify-content: center;
     border: 2px solid grey;
     border-radius: 10px;
-    margin-left: 10%;
+    margin-left: 5%;
     width: 80%;
     padding: 5px;
     background-color: white;
