@@ -34,7 +34,6 @@
     margin: 10px;
 }
 
-
 .today-left img{
     width:85%;
     height:auto;
@@ -100,8 +99,7 @@ span{
 /* -------- Weekday layout -------- */
 .day{
     display:flex;
-    flex-wrap:wrap;
-    justify-content:space-evenly;
+    flex-direction:column;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 5px;
@@ -118,7 +116,7 @@ span{
     border-radius: 10px;
     margin-left: 10%;
     width: 80%;
-    padding: 5px 1px 5px 1px;
+    padding: 5px;
     background-color: white;
 }
 
@@ -126,7 +124,8 @@ h2{
     margin: 5px 0px 0px 0px;
 }
 .day img{
-    margin: 10px auto;
+    width: 75%;
+    /* margin: 10px auto; */
 }
 /* -------- Chart Layout -------- */
 .bar{
